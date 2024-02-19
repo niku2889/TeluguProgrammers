@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/telugu-programmer",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
