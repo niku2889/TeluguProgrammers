@@ -109,10 +109,11 @@
                     <h4 class="text-center mb-4">Course Modules</h4>
 
                     <p-accordion [activeIndex]="0">
-                        <p-accordionTab *ngFor="let course of courseList" header="Module {{course.id}} - {{course.title}}">
+                        <p-accordionTab *ngFor="let course of courseList"
+                            header="Module {{course.id}} - {{course.title}}">
                             <div class="card-body p-0">
                                 <div class="module-intro p-3">{{course.description}}</div>
-                                <div (click)="openLink(sub.link)" *ngFor="let sub of course.links"
+                                <div (click)="openLink(sub.link,sub.title)" *ngFor="let sub of course.links"
                                     class="module-sub-item p-3">
                                     <div class="row justify-content-between">
                                         <div class="col-9"><span class="theme-text-secondary me-2">{{sub.id}}</span><a
@@ -686,7 +687,7 @@
         <div class="copyright mb-2">
             <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
             Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a
-                class="theme-link" href="https://startupcoder.in" target="_blank">Startup Coder</a> 
+                class="theme-link" href="https://startupcoder.in" target="_blank">Startup Coder</a>
         </div>
         <div class="legal mb-0">
             <ul class="list-inline mb-0">
@@ -699,19 +700,23 @@
 </footer><!--//footer-->
 
 <!-- Video Modal -->
-<div class="modal modal-video" id="modal-video" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- <div class="modal modal-video" id="modal-video" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <button (click)="closeDialog()" type="button" class="btn-close" data-bs-dismiss="modal"
                 aria-hidden="true">&times;</button>
             <div class="modal-body">
-                <div *ngIf="videoUrl" class="ratio ratio-16x9">
-                    <video autoplay controls controlsList="nodownload">
-                        <source [src]="videoUrl" type="video/mp4">
-                    </video>
-                </div>
+
             </div>
         </div>
     </div>
-</div>
+</div> -->
+<p-dialog [header]="courseTitle" [(visible)]="visible" [style]="{width: '50vw'}" [closeOnEscape]="false" [closable]="true"
+    (onHide)="closeDialog()">
+    <div *ngIf="videoUrl" class="ratio ratio-16x9">
+        <video autoplay controls controlsList="nodownload">
+            <source [src]="videoUrl" type="video/mp4">
+        </video>
+    </div>
+</p-dialog>
 <!-- modal -->

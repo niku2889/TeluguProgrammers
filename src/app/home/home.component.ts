@@ -13,7 +13,9 @@ export class HomeComponent {
   storageFolders = ['all/', 'course1/', 'course2/'];
   filelist: any[] = [];
   courseList: courseModel[] = [];
-  videoUrl:any;
+  videoUrl: any;
+  visible: boolean = false;
+  courseTitle = "";
 
   constructor(private storage: AngularFireStorage,
     private sanitizer: DomSanitizer) { }
@@ -62,11 +64,15 @@ export class HomeComponent {
     }
   }
 
-  openLink(videoLink: string) {
+  openLink(videoLink: string, title: string) {
+    this.courseTitle = title;
+    this.visible = true;
     this.videoUrl = this.sanitizer.bypassSecurityTrustUrl(videoLink);
   }
 
-  closeDialog(){
+  closeDialog() {
+    this.courseTitle = "";
+    this.visible = false;
     this.videoUrl = undefined;
   }
 

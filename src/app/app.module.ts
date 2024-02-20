@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
 import { DisableRightClickService } from './shared/disableRightClick';
 import { WatermarkDirective } from "./shared/watermark";
 import { AccordionModule } from 'primeng/accordion';
-
+import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -29,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AccordionModule
+    AccordionModule,
+    DialogModule
   ],
   providers: [DisableRightClickService, { provide: BUCKET, useValue: 'telegu-programmer.appspot.com' }],
   bootstrap: [AppComponent]
