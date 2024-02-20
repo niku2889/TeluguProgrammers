@@ -11,6 +11,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 import { DisableRightClickService } from './shared/disableRightClick';
 import { WatermarkDirective } from "./shared/watermark";
+import { AccordionModule } from 'primeng/accordion';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,13 @@ import { WatermarkDirective } from "./shared/watermark";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AccordionModule
   ],
   providers: [DisableRightClickService, { provide: BUCKET, useValue: 'telegu-programmer.appspot.com' }],
   bootstrap: [AppComponent]
