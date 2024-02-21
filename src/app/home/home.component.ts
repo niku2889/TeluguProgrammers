@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { courseModel } from '../models/course.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthenticationService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +16,11 @@ export class HomeComponent {
   videoUrl: any;
   visible: boolean = false;
   courseTitle = "";
+  showLogin: boolean = false;
 
   constructor(private storage: AngularFireStorage,
-    private sanitizer: DomSanitizer) { }
+    private sanitizer: DomSanitizer,
+    public authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.getFileList();
@@ -69,9 +71,10 @@ export class HomeComponent {
   }
 
   openCourse(course: any) {
-    this.courseTitle = course.title;
-    this.visible = true;
-    this.videoUrl = this.sanitizer.bypassSecurityTrustUrl(course.link);
+    if (this.authenticationService.isAuthenticated()) {
+      this.courseTitle = course.title;
+      this.visible = true;
+      this.videoUrl = this.sanitizer.bypassSecurityTrustUrl(course.link);
+    }
   }
-
 }

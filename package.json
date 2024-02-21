@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
     "firebase": "^10.8.0",
+    "firebaseui-angular": "^6.2.1",
     "mssql": "^10.0.2",
     "primeng": "^17.7.0",
     "rxjs": "~7.8.0",

@@ -15,11 +15,15 @@ import { AccordionModule } from 'primeng/accordion';
 import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { ButtonModule } from 'primeng/button';
+import { AuthenticationService } from './services/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    WatermarkDirective
+    WatermarkDirective,
   ],
   imports: [
     BrowserModule,
@@ -30,9 +34,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AccordionModule,
-    DialogModule
+    DialogModule,
+    AngularFireAuthModule,
+    ButtonModule,
   ],
-  providers: [DisableRightClickService, { provide: BUCKET, useValue: 'telegu-programmer.appspot.com' }],
+  providers: [DisableRightClickService, AuthenticationService, { provide: BUCKET, useValue: 'telegu-programmer.appspot.com' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

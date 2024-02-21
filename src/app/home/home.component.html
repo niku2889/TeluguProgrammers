@@ -1,8 +1,11 @@
 <header class="header">
     <section class="hero-section">
+
         <div class="hero-mask">
+
         </div><!--//hero-mask-->
         <div class="container text-center py-5">
+
             <div class="single-col-max mx-auto">
                 <div class="hero-heading-upper pt-3 mb-3">Online Course For SQL <br class="d-md-none">in Telugu Language
                 </div>
@@ -12,7 +15,15 @@
                     <span class="desc d-block">All Cources in Telugu Language</span>
                 </h1>
                 <div class="text-center mb-5">
-                    <a href="#section-pricing" class="btn btn-primary btn-lg scrollto">Start Learning Now</a>
+                    <!-- <a href="#section-pricing" class="btn btn-primary btn-lg scrollto">Start Learning Now</a> -->
+                    <a *ngIf="authenticationService.isAuthenticated() | async as user; else loginbtn"
+                        class="btn btn-danger" (click)="authenticationService.signOut()">Logout</a>
+                    <ng-template #loginbtn>
+                        <a class="btn btn-primary  m-3" href="#" data-bs-toggle="modal"
+                            data-bs-target="#modal-register">Register</a>
+                        <a class="btn btn-light " href="#" data-bs-toggle="modal"
+                            data-bs-target="#modal-login">Login</a>
+                    </ng-template>
                 </div>
 
                 <div class="hero-summary">
@@ -120,8 +131,14 @@
                                             <div class="summary mb-3">{{course.description}}
                                             </div>
                                             <div class="text-center">
-                                                <a class="btn btn-ghost btn-block" (click)="openCourse(course)">Find out
+                                                <a *ngIf="authenticationService.isAuthenticated() | async as user; else showLogin"
+                                                    class="btn btn-ghost btn-block" (click)="openCourse(course)">Find
+                                                    out
                                                     more</a>
+                                                <ng-template #showLogin>
+                                                    <a class="btn btn-primary scrollto" href="#section-pricing">Enroll
+                                                        Now</a>
+                                                </ng-template>
                                             </div>
                                         </div><!--//desc-->
 
@@ -132,7 +149,7 @@
                         </div><!--//container-->
                     </div><!--//section-8-->
                     <div class="section section-related">
-                        <p-accordion [activeIndex]="0">
+                        <p-accordion [activeIndex]="0" (onClose)="closeDialog()">
                             <p-accordionTab *ngIf="visible" header="{{courseTitle}}">
                                 <div class="card-body p-0">
                                     <div *ngIf="videoUrl" class="ratio ratio-16x9">
@@ -153,7 +170,7 @@
                                     <div class="row justify-content-between">
                                         <div class="col-9"><span class="theme-text-secondary me-2">{{sub.id}}</span><a
                                                 class="video-play-trigger" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#modal-video">{{sub.title}}</a><span
+                                                data-bs-target="#modal-login">{{sub.title}}</a><span
                                                 class="badge bg-primary ms-2">{{sub.type}}</span></div>
                                         <div class="col-3 text-end extra-info">{{sub.duration}}</div>
                                     </div>
@@ -185,7 +202,7 @@
                                             <div class="col-9"><span
                                                     class="theme-text-secondary me-2">{{sub.id}}</span><a
                                                     class="video-play-trigger" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#modal-video">{{sub.title}}</a><span
+                                                    data-bs-target="#modal-login">{{sub.title}}</a><span
                                                     class="badge bg-primary ms-2">{{sub.type}}</span></div>
                                             <div class="col-3 text-end extra-info">{{sub.duration}}</div>
                                         </div>
@@ -194,11 +211,6 @@
                             </div>
                         </div>
                     </div> -->
-                    <div class="text-center mt-5">
-                        <a class="btn btn-primary scrollto" href="#section-pricing">Enrol Now</a>
-                    </div>
-
-
                 </div>
             </div><!--//container-->
         </div><!--//section-content-->
@@ -480,9 +492,8 @@
 
                                     </div><!--//plan-content-->
                                     <div class="plan-cta text-center px-4">
-                                        <a class="btn btn-ghost btn-block"
-                                            href="https://themes.3rdwavemedia.com/bootstrap-templates/product/devcourse-bootstrap-4-course-landing-page-template/"
-                                            target="_blank">Join Free</a>
+                                        <a class="btn btn-ghost btn-block video-play-trigger" href="#"
+                                            data-bs-toggle="modal" data-bs-target="#modal-login">Join Free</a>
                                     </div>
                                 </div><!--//plan-item-->
                             </div><!--//col-->
@@ -519,9 +530,8 @@
 
                                     </div><!--//plan-content-->
                                     <div class="plan-cta text-center px-4">
-                                        <a class="btn btn-primary btn-block"
-                                            href="https://themes.3rdwavemedia.com/bootstrap-templates/product/devcourse-bootstrap-4-course-landing-page-template/"
-                                            target="_blank">Enrol Now</a>
+                                        <a class="btn btn-primary btn-block video-play-trigger" href="#"
+                                            data-bs-toggle="modal" data-bs-target="#modal-login">Enrol Now</a>
                                     </div>
                                 </div><!--//plan-item-->
                             </div><!--//col-->
@@ -735,23 +745,107 @@
 </footer><!--//footer-->
 
 <!-- Video Modal -->
-<!-- <div class="modal modal-video" id="modal-video" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal" id="modal-login" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <button (click)="closeDialog()" type="button" class="btn-close" data-bs-dismiss="modal"
                 aria-hidden="true">&times;</button>
             <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5 mx-auto">
+                        <div id="first">
+                            <div class="myform form ">
+                                <div class="logo mb-3">
+                                    <div class="col-md-12 text-center">
+                                        <h1>Login</h1>
+                                    </div>
+                                </div>
+                                <form action="" method="post" name="login">
+                                    <div class="form-group mb-3">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" name="email" class="form-control" id="email"
+                                            aria-describedby="emailHelp" placeholder="Enter email" #userEmail required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="exampleInputEmail1">Password</label>
+                                        <input type="password" name="password" id="password" class="form-control"
+                                            aria-describedby="emailHelp" placeholder="Enter Password" #userPassword
+                                            required>
+                                    </div>
+                                    <div class="col-md-12 text-center mb-3">
+                                        <button
+                                            (click)="authenticationService.SignIn(userEmail.value, userPassword.value)"
+                                            type="button" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <p class="text-center">Don't have account? <a href="#" data-bs-toggle="modal"
+                                                data-bs-target="#modal-register" id="signup">Sign up
+                                                here</a></p>
+                                    </div>
+                                </form>
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div> -->
-<!-- <p-dialog [header]="courseTitle" [(visible)]="visible" [style]="{width: '50vw'}" [closeOnEscape]="false"
-    [closable]="true" (onHide)="closeDialog()">
-    <div *ngIf="videoUrl" class="ratio ratio-16x9">
-        <video autoplay controls controlsList="nodownload">
-            <source [src]="videoUrl" type="video/mp4">
-        </video>
+</div>
+
+<div class="modal" id="modal-register" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button (click)="closeDialog()" type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-hidden="true">&times;</button>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5 mx-auto">
+                        <div id="second">
+                            <div class="myform form ">
+                                <div class="logo mb-3">
+                                    <div class="col-md-12 text-center">
+                                        <h1>Signup</h1>
+                                    </div>
+                                </div>
+                                <form action="#" name="registration">
+                                    <div class="form-group mb-3">
+                                        <label for="exampleInputEmail1">First Name</label>
+                                        <input type="text" name="name" class="form-control" id="name"
+                                            aria-describedby="emailHelp" placeholder="Enter Name" #userName required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" name="email" class="form-control" id="email"
+                                            aria-describedby="emailHelp" placeholder="Enter email" #userEmail required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="exampleInputEmail1">Password</label>
+                                        <input type="password" name="password" id="password" class="form-control"
+                                            aria-describedby="emailHelp" placeholder="Enter Password" #userPassword
+                                            required>
+                                    </div>
+                                    <div class="col-md-12 text-center mb-3">
+                                        <button
+                                            (click)="authenticationService.SignUp(userEmail.value, userPassword.value,userName.value)"
+                                            type="button" class=" btn btn-block mybtn btn-primary tx-tfm">Get
+                                            Started For
+                                            Free</button>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <div class="form-group">
+                                            <p class="text-center"><a href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#modal-login" id="signin">Already have an
+                                                    account?</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</p-dialog> -->
-<!-- modal -->
+</div>
