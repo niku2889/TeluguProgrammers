@@ -48,4 +48,5 @@ export class AuthenticationService {
     isAuthenticated() {
         return this.afAuth.user;
     }
+
 }

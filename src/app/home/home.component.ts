@@ -42,7 +42,7 @@ export class HomeComponent {
           let url = newref.getDownloadURL().subscribe((urlres) => {
             let courseData: courseModel = {
               id: (i + 1).toString(),
-              title: "Course SQL " + (i + 1).toString(),
+              title: "Course " + (i + 1).toString(),
               description: "",
               duration: "01:30",
               type: "preview",

@@ -19,8 +19,10 @@
                     <a *ngIf="authenticationService.isAuthenticated() | async as user; else loginbtn"
                         class="btn btn-danger" (click)="authenticationService.signOut()">Logout</a>
                     <ng-template #loginbtn>
-                        <a  class="btn btn-primary  m-3" href="#" data-bs-toggle="modal"
-                            data-bs-target="#modal-register">Register</a>
+                        <div *ngIf="authenticationService.isAuthenticated() | async as user;">
+                            <a *ngIf="user?.email == 'teluguprogrammer.tips@gmail.com'" class="btn btn-primary  m-3"
+                                href="#" data-bs-toggle="modal" data-bs-target="#modal-register">Register</a>
+                        </div>
                         <a class="btn btn-light " href="#" data-bs-toggle="modal"
                             data-bs-target="#modal-login">Login</a>
                     </ng-template>
@@ -78,21 +80,21 @@
                     <div class="text-center mb-5">
                         <a class="btn btn-primary scrollto" href="#section-pricing">Join Course Now</a>
                     </div>
-                    <div class="video-container">
+                    <!-- <div class="video-container">
                         <div class="ratio ratio-16x9">
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/qz0aGYrrlhU"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
                         </div>
-                    </div><!--//video-container-->
+                    </div> -->
 
                 </div><!--//section-col-max-->
             </div><!--//container-->
         </div><!--//section-overview-->
 
         <div id="section-content" class="section-content section">
-            <div class="container py-5">
+            <div class="container">
                 <div class="">
                     <h3 class="section-title mb-5">What's Included</h3>
 
@@ -121,25 +123,37 @@
                         <div class="container">
                             <h3 class="section-title mb-5">Course Modules</h3>
                             <div class="related-items row">
-                                <div *ngFor="let course of courseList" class="col-12 col-lg-4 mb-4 mb-lg-0">
+                                <div *ngFor="let course of courseList" class="col-12 col-lg-6 mb-4 mt-4 mb-lg-0">
                                     <div class="item">
-                                        <div class="item-thumb">
-                                            <img class="img-fluid rounded-top" src="assets/images/course-1.jpg" alt="">
+                                        <div *ngIf="authenticationService.isAuthenticated() | async as user; else showLogin"
+                                            class="item-thumb">
+                                            <div *ngIf="course.link" class="ratio ratio-16x9">
+                                                <video controls controlsList="nodownload"
+                                                    poster="assets/images/course-1.jpg">
+                                                    <source [src]="course.link" type="video/mp4">
+                                                </video>
+                                            </div>
                                         </div><!--//thumb-holder-->
+                                        <ng-template #showLogin>
+                                            <div class="item-thumb position-relative">
+                                                <img class="img-fluid rounded-top opacity-50" src="assets/images/course-1.jpg"
+                                                    alt="">
+                                                <a class="btn btn-primary scrollto middlebtn" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#modal-login">Enroll
+                                                    Now</a>
+                                            </div>
+                                        </ng-template>
                                         <div class="item-desc p-4 rounded-bottom">
                                             <h4 class="title mb-3"><a href="#">{{course.title}}</a></h4>
                                             <div class="summary mb-3">{{course.description}}
                                             </div>
-                                            <div class="text-center">
+                                            <!-- <div class="text-center">
                                                 <a *ngIf="authenticationService.isAuthenticated() | async as user; else showLogin"
                                                     class="btn btn-ghost btn-block" (click)="openCourse(course)">Find
                                                     out
                                                     more</a>
-                                                <ng-template #showLogin>
-                                                    <a class="btn btn-primary scrollto" href="#section-pricing">Enroll
-                                                        Now</a>
-                                                </ng-template>
-                                            </div>
+
+                                            </div> -->
                                         </div><!--//desc-->
 
                                     </div><!--//item-->
@@ -148,19 +162,15 @@
                             </div><!--//row-->
                         </div><!--//container-->
                     </div><!--//section-8-->
-                    <div class="section section-related">
+                    <!-- <div class="section section-related">
                         <p-accordion [activeIndex]="0" (onClose)="closeDialog()">
                             <p-accordionTab *ngIf="visible" header="{{courseTitle}}">
                                 <div class="card-body p-0">
-                                    <div *ngIf="videoUrl" class="ratio ratio-16x9">
-                                        <video autoplay controls controlsList="nodownload">
-                                            <source [src]="videoUrl" type="video/mp4">
-                                        </video>
-                                    </div>
+
                                 </div>
                             </p-accordionTab>
                         </p-accordion>
-                    </div>
+                    </div> -->
                     <!-- <p-accordion [activeIndex]="0">
                         <p-accordionTab *ngFor="let course of courseList"
                             header="Module {{course.id}} - {{course.title}}">
@@ -215,7 +225,7 @@
             </div><!--//container-->
         </div><!--//section-content-->
 
-        <div id="section-requirements" class="section-requirements section">
+        <!-- <div id="section-requirements" class="section-requirements section">
             <div class="container py-5">
                 <div class="section-col-max mx-auto">
                     <h3 class="section-title mb-4">Who Is This Course For</h3>
@@ -235,12 +245,12 @@
                                 </div>
                                 <button type="submit" class="btn btn-ghost btn-submit w-100">Sign Up Now</button>
                             </form>
-                        </div><!--//form-wrapper-->
-                    </div><!--//lead-form-wrapper-->
+                        </div>
+                    </div>
 
                 </div>
-            </div><!--//container-->
-        </div><!--//section-requirements-->
+            </div>
+        </div> -->
 
         <div id="section-tutor" class="section-tutor section pb-5">
             <div class="container">
@@ -632,7 +642,7 @@
                 </div><!--//container-inner-->
             </div><!--//container-->
         </div><!--//section-faq-->
-
+        <!-- 
         <div id="section-more" class="section section-related py-5">
             <div class="container">
                 <h3 class="section-title mb-5">More Courses You May Like</h3>
@@ -641,7 +651,7 @@
                         <div class="item">
                             <div class="item-thumb">
                                 <img class="img-fluid rounded-top" src="assets/images/course-1.jpg" alt="">
-                            </div><!--//thumb-holder-->
+                            </div>
                             <div class="item-desc p-4 rounded-bottom">
                                 <h4 class="title mb-3"><a href="#">Course Title Lorem Ipsum</a></h4>
                                 <div class="summary mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -651,15 +661,15 @@
                                 <div class="text-center">
                                     <a class="btn btn-ghost btn-block" href="#">Find out more</a>
                                 </div>
-                            </div><!--//desc-->
+                            </div>
 
-                        </div><!--//item-->
-                    </div><!--//col-->
+                        </div>
+                    </div>
                     <div class="col-12 col-lg-4 mb-4 mb-lg-0">
                         <div class="item">
                             <div class="item-thumb">
                                 <img class="img-fluid rounded-top" src="assets/images/course-2.jpg" alt="">
-                            </div><!--//thumb-holder-->
+                            </div>
                             <div class="item-desc p-4 rounded-bottom">
                                 <h4 class="title mb-3"><a href="#">Course Title Lorem Ipsum</a></h4>
                                 <div class="summary mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -669,15 +679,15 @@
                                 <div class="text-center">
                                     <a class="btn btn-ghost btn-block" href="#">Find out more</a>
                                 </div>
-                            </div><!--//desc-->
+                            </div>
 
-                        </div><!--//item-->
-                    </div><!--//col-->
+                        </div>
+                    </div>
                     <div class="col-12 col-lg-4">
                         <div class="item">
                             <div class="item-thumb">
                                 <img class="img-fluid rounded-top" src="assets/images/course-3.jpg" alt="">
-                            </div><!--//thumb-holder-->
+                            </div>
                             <div class="item-desc p-4 rounded-bottom">
                                 <h4 class="title mb-3"><a href="#">Course Title Lorem Ipsum</a></h4>
                                 <div class="summary mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -687,14 +697,13 @@
                                 <div class="text-center">
                                     <a class="btn btn-ghost btn-block" href="#">Find out more</a>
                                 </div>
-                            </div><!--//desc-->
+                            </div>
 
-                        </div><!--//item-->
-                    </div><!--//col-->
-                </div><!--//row-->
-            </div><!--//container-->
-        </div><!--//section-8-->
-
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
 
         <div class="section section-contact text-center">
             <div class="container">
@@ -777,8 +786,10 @@
                                             (click)="authenticationService.SignIn(userEmail.value, userPassword.value)"
                                             type="button" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
                                     </div>
-                                    <div class="form-group mb-3">
-                                        <p class="text-center">Don't have account? <a href="#" data-bs-toggle="modal"
+                                    <div *ngIf="authenticationService.isAuthenticated() | async as user;"
+                                        class="form-group mb-3">
+                                        <p *ngIf="user?.email == 'teluguprogrammer.tips@gmail.com'" class="text-center">
+                                            Don't have account? <a href="#" data-bs-toggle="modal"
                                                 data-bs-target="#modal-register" id="signup">Sign up
                                                 here</a></p>
                                     </div>
@@ -817,13 +828,14 @@
                                     <div class="form-group mb-3">
                                         <label for="exampleInputEmail1">Email address</label>
                                         <input type="email" name="email" class="form-control" id="userEmailRegister"
-                                            aria-describedby="emailHelp" placeholder="Enter email" #userEmailRegister required>
+                                            aria-describedby="emailHelp" placeholder="Enter email" #userEmailRegister
+                                            required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="exampleInputEmail1">Password</label>
-                                        <input type="password" name="password" id="userPasswordRegister" class="form-control"
-                                            aria-describedby="emailHelp" placeholder="Enter Password" #userPasswordRegister
-                                            required>
+                                        <input type="password" name="password" id="userPasswordRegister"
+                                            class="form-control" aria-describedby="emailHelp"
+                                            placeholder="Enter Password" #userPasswordRegister required>
                                     </div>
                                     <div class="col-md-12 text-center mb-3">
                                         <button
