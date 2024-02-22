@@ -43,8 +43,7 @@ export class HomeComponent {
             let courseData: courseModel = {
               id: (i + 1).toString(),
               title: "Course SQL " + (i + 1).toString(),
-              description: "Module intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
-                "Pellentesque interdum elit non neque venenatis, ut mattis sapien lobortis.Integer eget turpis non ipsum convallis convallis vitae eu nunc.",
+              description: "",
               duration: "01:30",
               type: "preview",
               link: urlres,

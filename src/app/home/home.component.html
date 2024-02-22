@@ -19,7 +19,7 @@
                     <a *ngIf="authenticationService.isAuthenticated() | async as user; else loginbtn"
                         class="btn btn-danger" (click)="authenticationService.signOut()">Logout</a>
                     <ng-template #loginbtn>
-                        <a class="btn btn-primary  m-3" href="#" data-bs-toggle="modal"
+                        <a  class="btn btn-primary  m-3" href="#" data-bs-toggle="modal"
                             data-bs-target="#modal-register">Register</a>
                         <a class="btn btn-light " href="#" data-bs-toggle="modal"
                             data-bs-target="#modal-login">Login</a>
@@ -763,12 +763,12 @@
                                 <form action="" method="post" name="login">
                                     <div class="form-group mb-3">
                                         <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" name="email" class="form-control" id="email"
+                                        <input type="email" name="email" class="form-control" id="userEmail"
                                             aria-describedby="emailHelp" placeholder="Enter email" #userEmail required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="exampleInputEmail1">Password</label>
-                                        <input type="password" name="password" id="password" class="form-control"
+                                        <input type="password" name="password" id="userPassword" class="form-control"
                                             aria-describedby="emailHelp" placeholder="Enter Password" #userPassword
                                             required>
                                     </div>
@@ -816,18 +816,18 @@
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" name="email" class="form-control" id="email"
-                                            aria-describedby="emailHelp" placeholder="Enter email" #userEmail required>
+                                        <input type="email" name="email" class="form-control" id="userEmailRegister"
+                                            aria-describedby="emailHelp" placeholder="Enter email" #userEmailRegister required>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="exampleInputEmail1">Password</label>
-                                        <input type="password" name="password" id="password" class="form-control"
-                                            aria-describedby="emailHelp" placeholder="Enter Password" #userPassword
+                                        <input type="password" name="password" id="userPasswordRegister" class="form-control"
+                                            aria-describedby="emailHelp" placeholder="Enter Password" #userPasswordRegister
                                             required>
                                     </div>
                                     <div class="col-md-12 text-center mb-3">
                                         <button
-                                            (click)="authenticationService.SignUp(userEmail.value, userPassword.value,userName.value)"
+                                            (click)="authenticationService.SignUp(userEmailRegister.value, userPasswordRegister.value,userName.value)"
                                             type="button" class=" btn btn-block mybtn btn-primary tx-tfm">Get
                                             Started For
                                             Free</button>

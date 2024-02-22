@@ -11,10 +11,11 @@ export class AuthenticationService {
 
     // Sign up with email/password
     SignUp(email: string, password: string, name: string) {
+        console.log(email)
         if (name == "")
             return window.alert('Name is required');
         return this.afAuth
-            .createUserWithEmailAndPassword(email, password)
+            .createUserWithEmailAndPassword(email.toString().trim(), password.toString().trim())
             .then((result) => {
                 result.user?.updateProfile({
                     displayName: name
@@ -31,7 +32,7 @@ export class AuthenticationService {
     // Sign in with email/password
     SignIn(email: string, password: string) {
         return this.afAuth
-            .signInWithEmailAndPassword(email, password)
+            .signInWithEmailAndPassword(email.toString().trim(), password.toString().trim())
             .then((result) => {
                 window.alert('You have been successfully signed in!');
             })
