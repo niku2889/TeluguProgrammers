@@ -6,4 +6,5 @@ export class courseModel {
     type!: string;
     link!: string;
     fileName!: string;
+    thumbnail!: string;
 }

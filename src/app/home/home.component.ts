@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { courseModel } from '../models/course.model';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -10,17 +10,23 @@ import { AuthenticationService } from '../services/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  storageFolders = ['all/'];
+  storageFolders = ['all/', 'thumbnails/'];
   filelist: any[] = [];
   courseList: courseModel[] = [];
   videoUrl: any;
   visible: boolean = false;
   courseTitle = "";
   showLogin: boolean = false;
+  @ViewChild('closebutton') closebutton: any;
 
   constructor(private storage: AngularFireStorage,
     private sanitizer: DomSanitizer,
-    public authenticationService: AuthenticationService) { }
+    public authenticationService: AuthenticationService) {
+    this.authenticationService.isAuthenticated().subscribe(ref => {
+      if (ref != null)
+        this.closebutton.nativeElement.click();
+    })
+  }
 
   ngOnInit(): void {
     this.getFileList();
@@ -40,16 +46,23 @@ export class HomeComponent {
           let name = data.items[i].name;
           let newref = this.storage.ref(e + data.items[i].name);
           let url = newref.getDownloadURL().subscribe((urlres) => {
-            let courseData: courseModel = {
-              id: (i + 1).toString(),
-              title: "Course " + (i + 1).toString(),
-              description: "",
-              duration: "01:30",
-              type: "preview",
-              link: urlres,
-              fileName: name
+            if (j == 0) {
+              let courseData: courseModel = {
+                id: (i + 1).toString(),
+                title: "Course " + (i + 1).toString(),
+                description: "",
+                duration: "01:30",
+                type: "preview",
+                link: urlres,
+                fileName: name,
+                thumbnail: ""
+              }
+              this.courseList.push(courseData);
+            } else {
+              //console.log(this.courseList[i])
+              if (this.courseList[i])
+                this.courseList[i].thumbnail = urlres;
             }
-            this.courseList.push(courseData);
             this.courseList = this.courseList.sort((a: any, b: any) => a.id - b.id)
           });
         }
