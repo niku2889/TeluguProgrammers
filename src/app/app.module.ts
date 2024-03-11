@@ -18,13 +18,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { ButtonModule } from 'primeng/button';
 import { AuthenticationService } from './services/auth.service';
+import { LoginComponent } from './login/login.component';
 
+import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TestingComponent } from './testing/testing.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     WatermarkDirective,
+    LoginComponent,
+    TestingComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -37,6 +44,7 @@ import { AuthenticationService } from './services/auth.service';
     DialogModule,
     AngularFireAuthModule,
     ButtonModule,
+    MdbCheckboxModule
   ],
   providers: [DisableRightClickService, AuthenticationService, { provide: BUCKET, useValue: 'telegu-programmer.appspot.com' }],
   bootstrap: [AppComponent]
