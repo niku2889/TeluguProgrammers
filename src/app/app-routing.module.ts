@@ -6,7 +6,7 @@ import { TestingComponent } from './testing/testing.component';
 
 //const routes: Routes = [{ path: "", component: HomeComponent }];
 const routes: Routes = [{ path: "", component: LoginComponent },
-                      { path: "/TestPageK", component: TestingComponent }];
+                      { path: "TestPageK", component: TestingComponent }];
 
 
 
