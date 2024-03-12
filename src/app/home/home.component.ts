@@ -3,7 +3,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { courseModel } from '../models/course.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthenticationService } from '../services/auth.service';
-import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,7 +21,6 @@ export class HomeComponent {
 
   constructor(private storage: AngularFireStorage,
     private sanitizer: DomSanitizer,
-    private router : Router,
     public authenticationService: AuthenticationService) {
     this.authenticationService.isAuthenticated().subscribe(ref => {
       if (ref != null)
@@ -81,11 +80,6 @@ export class HomeComponent {
     this.courseTitle = "";
     this.visible = false;
     this.videoUrl = undefined;
-  }
-  redirectToAnotherPage()
-  {
-     // Assuming 'another-page' is the route/path you want to navigate to
-     this.router.navigate(['/TestPageK']);
   }
 
   openCourse(course: any) {
