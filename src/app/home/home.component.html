@@ -1,32 +1,36 @@
 <header class="header">
-    <section class="hero-section">
+    <div class="text-center mb-0 mt-4">
+        <!-- <a href="#section-pricing" class="btn btn-primary btn-lg scrollto">Start Learning Now</a> -->
+        <a *ngIf="authenticationService.isAuthenticated() | async as user; else loginbtn"
+            class="btn btn-danger" (click)="authenticationService.signOut()">Logout</a>
+        <ng-template #loginbtn>
+            <div *ngIf="authenticationService.isAuthenticated() | async as user;">
+                <a *ngIf="user?.email == 'teluguprogrammer.tips@gmail.com'" class="btn btn-primary  m-3"
+                    href="#" data-bs-toggle="modal" data-bs-target="#modal-register">Register</a>
+            </div>
+            <a class="btn btn-primary " href="#" data-bs-toggle="modal"
+                data-bs-target="#modal-login">Login</a>
+        </ng-template>
+    </div>
 
+    <!-- <section class="hero-section">
+
+    
+        
         <div class="hero-mask">
 
-        </div><!--//hero-mask-->
+        </div>
         <div class="container text-center py-5">
 
             <div class="single-col-max mx-auto">
-                <div class="hero-heading-upper pt-3 mb-3">Online Course For SQL <br class="d-md-none">in Telugu Language
+                <div class="hero-heading-upper pt-3 mb-3">Online Course For .Net MVC <br class="d-md-none">in Telugu Language
                 </div>
                 <h1 class="hero-heading mb-5">
                     <span class="brand mb-4 d-block"><span class="text-highlight pr-2">(</span><span class="name">SQL
                             COURCES</span><span class="text-highlight pl-2">)</span></span>
                     <span class="desc d-block">All Cources in Telugu Language</span>
                 </h1>
-                <div class="text-center mb-5">
-                    <!-- <a href="#section-pricing" class="btn btn-primary btn-lg scrollto">Start Learning Now</a> -->
-                    <a *ngIf="authenticationService.isAuthenticated() | async as user; else loginbtn"
-                        class="btn btn-danger" (click)="authenticationService.signOut()">Logout</a>
-                    <ng-template #loginbtn>
-                        <div *ngIf="authenticationService.isAuthenticated() | async as user;">
-                            <a *ngIf="user?.email == 'teluguprogrammer.tips@gmail.com'" class="btn btn-primary  m-3"
-                                href="#" data-bs-toggle="modal" data-bs-target="#modal-register">Register</a>
-                        </div>
-                        <a class="btn btn-light " href="#" data-bs-toggle="modal"
-                            data-bs-target="#modal-login">Login</a>
-                    </ng-template>
-                </div>
+               
 
                 <div class="hero-summary">
                     <div class="row">
@@ -34,32 +38,33 @@
                             <div class="summary-desc mb-1"><i class="icon fas fa-video me-2"></i>Content</div>
                             <h4 class="summary-heading">80+ <span class="desc">Videos</span></h4>
 
-                        </div><!--//col-->
+                        </div>
                         <div class="item col-4">
                             <div class="summary-desc mb-1"><i class="icon fas fa-clock me-2"></i>Duration</div>
                             <h4 class="summary-heading">100 <span class="desc">Hours</span></h4>
 
-                        </div><!--//col-->
+                        </div>
                         <div class="item col-4">
                             <div class="summary-desc mb-1"><i class="icon fas fa-user-circle me-2"></i>Access</div>
                             <h4 class="summary-heading">Lifetime</h4>
 
-                        </div><!--//col-->
-                    </div><!--//row-->
-                </div><!--//hero-summary-->
-            </div><!--//single-col-max-->
-        </div><!--//container-->
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
 
-    </section><!--//hero-section-->
-</header><!--//header-->
+    </section> -->
+</header>
 
 <div class="sections-wrapper">
 
 
     <div class="section-blocks mb-5">
 
-        <div id="section-overview" class="section-overview section pt-md-4 pt-lg-5">
-            <div class="container py-5">
+        <!-- <div id="section-overview" class="section-overview section pt-md-4 pt-lg-5">
+          <div class="container py-5">
                 <div class="section-col-max mx-auto">
                     <h3 class="section-title mb-4">What Will You Learn</h3>
                     <p class="mb-4">Your course overview goes here. Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -76,52 +81,45 @@
                             <li><i class="theme-check-icon fas fa-check me-2"></i>Course highlight lorem ipsum</li>
                             <li><i class="theme-check-icon fas fa-check me-2"></i>Course highlight lorem ipsum</li>
                         </ul>
-                    </div><!--//text-center-->
+                    </div>
                     <div class="text-center mb-5">
                         <a class="btn btn-primary scrollto" href="#section-pricing">Join Course Now</a>
                     </div>
-                    <!-- <div class="video-container">
-                        <div class="ratio ratio-16x9">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/qz0aGYrrlhU"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div> -->
+                  
 
-                </div><!--//section-col-max-->
-            </div><!--//container-->
-        </div><!--//section-overview-->
+                </div>
+            </div> 
+        </div> -->
 
         <div id="section-content" class="section-content section">
             <div class="container">
                 <div class="">
-                    <h3 class="section-title mb-5">What's Included</h3>
+                    <!-- <h3 class="section-title mb-5">What's Included</h3> -->
 
-                    <div class="data-summary justify-content-center text-center">
+                    <!-- <div class="data-summary justify-content-center text-center">
                         <div class="row mb-5">
                             <div class="item col-6 col-lg-3 mb-3 mb-lg-0">
                                 <div class="data">10+</div>
                                 <div class="meta">Modules</div>
-                            </div><!--//item-->
+                            </div>
                             <div class="item col-6 col-lg-3 mb-3 mb-lg-0">
                                 <div class="data">80+</div>
                                 <div class="meta">Videos</div>
-                            </div><!--//item-->
+                            </div>
                             <div class="item col-6 col-lg-3 mb-3 mb-lg-0">
                                 <div class="data">40+</div>
                                 <div class="meta">Resources</div>
-                            </div><!--//item-->
+                            </div>
                             <div class="item col-6 col-lg-3 mb-3 mb-lg-0">
                                 <div class="data">72</div>
                                 <div class="meta">Hours</div>
-                            </div><!--//item-->
-                        </div><!--//row-->
-                    </div><!--//course-summary-->
+                            </div>
+                        </div>
+                    </div> -->
 
                     <div id="section-more" class="section section-related py-5">
                         <div class="container">
-                            <h3 class="section-title mb-5">Course Modules</h3>
+                            <!-- <h3 class="section-title mb-5">Course Modules</h3> -->
                             <div class="related-items row">
                                 <div *ngFor="let course of courseList" class="col-12 col-lg-6 mb-4 mt-4 mb-lg-0">
                                     <div class="item">
@@ -251,7 +249,7 @@
             </div>
         </div> -->
 
-        <div id="section-tutor" class="section-tutor section pb-5">
+        <!-- <div id="section-tutor" class="section-tutor section pb-5">
             <div class="container">
                 <div class="container-inner p-5 position-relative theme-bg-primary rounded">
                     <div class="section-bg-container"></div>
@@ -259,8 +257,8 @@
                         <div class="col-12 col-lg-3">
                             <div class="tutor-img-holder mb-5 mb-lg-0 text-center">
                                 <img class="tutor-profile img-fluid rounded" src="assets/images/tutor.jpg" alt="">
-                            </div><!--//tutor-img-holder-->
-                        </div><!--//col-->
+                            </div>
+                        </div>
                         <div class="col-12 col-lg-9">
                             <div class="pl-lg-4">
                                 <h3 class="section-title mb-4 text-white text-lg-start">Meet The Tutor</h3>
@@ -284,16 +282,16 @@
                                         </li>
                                         <li class="list-inline-item"><a href="#"><i class="fa fa-blog fa-fw"></i></a>
                                         </li>
-                                    </ul><!--//social-list-->
+                                    </ul>
                                 </div>
                             </div>
-                        </div><!--//col-->
-                    </div><!--//row-->
-                </div><!--//container-inner-->
-            </div><!--//container-->
-        </div><!--//section-tutor-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
 
-        <div id="section-reviews" class="section-reviews py-5">
+        <!-- <div id="section-reviews" class="section-reviews py-5">
             <div class="container">
                 <h3 class="section-title mb-5">Course Reviews</h3>
                 <div class="row">
@@ -309,26 +307,26 @@
                                                 d="M19.2093023,0 L19.2093023,1.17365269 C17.5968912,1.78044216 16.3333379,2.73452443 15.4186047,4.03592814 C14.5038714,5.33733186 14.0465116,6.69061174 14.0465116,8.09580838 C14.0465116,8.39920311 14.0930228,8.62275377 14.1860465,8.76646707 C14.2480623,8.86227593 14.3178291,8.91017964 14.3953488,8.91017964 C14.4728686,8.91017964 14.5891465,8.85429198 14.744186,8.74251497 C15.2403126,8.37524766 15.8682133,8.19161677 16.627907,8.19161677 C17.5116323,8.19161677 18.2945702,8.56287054 18.9767442,9.30538922 C19.6589181,10.0479079 20,10.9301346 20,11.9520958 C20,13.0219614 19.608531,13.9640678 18.8255814,14.7784431 C18.0426317,15.5928184 17.0930288,16 15.9767442,16 C14.6744121,16 13.5503923,15.4491073 12.6046512,14.3473054 C11.65891,13.2455035 11.1860465,11.7684723 11.1860465,9.91616766 C11.1860465,7.76046826 11.8294509,5.82835186 13.1162791,4.11976048 C14.4031072,2.4111691 16.4340947,1.03792934 19.2093023,0 Z M8.02325581,0 L8.02325581,1.17365269 C6.41084465,1.78044216 5.1472914,2.73452443 4.23255814,4.03592814 C3.31782488,5.33733186 2.86046512,6.69061174 2.86046512,8.09580838 C2.86046512,8.39920311 2.90697628,8.62275377 3,8.76646707 C3.06201581,8.86227593 3.13178256,8.91017964 3.20930233,8.91017964 C3.28682209,8.91017964 3.4031,8.85429198 3.55813953,8.74251497 C4.05426605,8.37524766 4.68216674,8.19161677 5.44186047,8.19161677 C6.32558581,8.19161677 7.10852372,8.56287054 7.79069767,9.30538922 C8.47287163,10.0479079 8.81395349,10.9301346 8.81395349,11.9520958 C8.81395349,13.0219614 8.42248453,13.9640678 7.63953488,14.7784431 C6.85658523,15.5928184 5.90698233,16 4.79069767,16 C3.48836558,16 2.36434581,15.4491073 1.41860465,14.3473054 C0.472863488,13.2455035 0,11.7684723 0,9.91616766 C0,7.76046826 0.643404419,5.82835186 1.93023256,4.11976048 C3.2170607,2.4111691 5.24804814,1.03792934 8.02325581,0 Z">
                                             </path>
                                         </g>
-                                    </svg><!--//quote-icon-->
+                                    </svg>
                                 </div>
                                 <p>Great course lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
                                     condimentum mi sed
                                     tortor lobortis, nec feugiat nisi venenatis.</p>
-                            </blockquote><!--//quote-->
+                            </blockquote>
                             <div class="source">
                                 <div class="row align-items-center">
                                     <div class="col-3 col-lg-4">
                                         <div class="profile"><img class="profile-image img-fluid"
                                                 src="assets/images/users/user-1.jpg" alt=""></div>
-                                    </div><!--col-12-->
+                                    </div>
                                     <div class="col-9 col-lg-8">
                                         <div class="name font-weight-bold">Adam Doe</div>
                                         <div class="meta">New York</div>
-                                    </div><!--//col-12-->
-                                </div><!--//row-->
-                            </div><!--//source-->
-                        </div><!--//item-->
-                    </div><!--//col-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-4">
                         <div class="review-item rounded p-5">
                             <blockquote class="quote mb-4">
@@ -341,26 +339,26 @@
                                                 d="M19.2093023,0 L19.2093023,1.17365269 C17.5968912,1.78044216 16.3333379,2.73452443 15.4186047,4.03592814 C14.5038714,5.33733186 14.0465116,6.69061174 14.0465116,8.09580838 C14.0465116,8.39920311 14.0930228,8.62275377 14.1860465,8.76646707 C14.2480623,8.86227593 14.3178291,8.91017964 14.3953488,8.91017964 C14.4728686,8.91017964 14.5891465,8.85429198 14.744186,8.74251497 C15.2403126,8.37524766 15.8682133,8.19161677 16.627907,8.19161677 C17.5116323,8.19161677 18.2945702,8.56287054 18.9767442,9.30538922 C19.6589181,10.0479079 20,10.9301346 20,11.9520958 C20,13.0219614 19.608531,13.9640678 18.8255814,14.7784431 C18.0426317,15.5928184 17.0930288,16 15.9767442,16 C14.6744121,16 13.5503923,15.4491073 12.6046512,14.3473054 C11.65891,13.2455035 11.1860465,11.7684723 11.1860465,9.91616766 C11.1860465,7.76046826 11.8294509,5.82835186 13.1162791,4.11976048 C14.4031072,2.4111691 16.4340947,1.03792934 19.2093023,0 Z M8.02325581,0 L8.02325581,1.17365269 C6.41084465,1.78044216 5.1472914,2.73452443 4.23255814,4.03592814 C3.31782488,5.33733186 2.86046512,6.69061174 2.86046512,8.09580838 C2.86046512,8.39920311 2.90697628,8.62275377 3,8.76646707 C3.06201581,8.86227593 3.13178256,8.91017964 3.20930233,8.91017964 C3.28682209,8.91017964 3.4031,8.85429198 3.55813953,8.74251497 C4.05426605,8.37524766 4.68216674,8.19161677 5.44186047,8.19161677 C6.32558581,8.19161677 7.10852372,8.56287054 7.79069767,9.30538922 C8.47287163,10.0479079 8.81395349,10.9301346 8.81395349,11.9520958 C8.81395349,13.0219614 8.42248453,13.9640678 7.63953488,14.7784431 C6.85658523,15.5928184 5.90698233,16 4.79069767,16 C3.48836558,16 2.36434581,15.4491073 1.41860465,14.3473054 C0.472863488,13.2455035 0,11.7684723 0,9.91616766 C0,7.76046826 0.643404419,5.82835186 1.93023256,4.11976048 C3.2170607,2.4111691 5.24804814,1.03792934 8.02325581,0 Z">
                                             </path>
                                         </g>
-                                    </svg><!--//quote-icon-->
+                                    </svg>
                                 </div>
                                 <p>Highly recommend lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
                                     porttitor id velit
                                     in ullamcorper nam eu elit nec nunc. </p>
-                            </blockquote><!--//quote-->
+                            </blockquote>
                             <div class="source">
                                 <div class="row align-items-center">
                                     <div class="col-3 col-lg-4">
                                         <div class="profile"><img class="profile-image img-fluid"
                                                 src="assets/images/users/user-2.jpg" alt=""></div>
-                                    </div><!--col-12-->
+                                    </div>
                                     <div class="col-9 col-lg-8">
                                         <div class="name font-weight-bold">Sarah Doe</div>
                                         <div class="meta">London</div>
-                                    </div><!--//col-12-->
-                                </div><!--//row-->
-                            </div><!--//source-->
-                        </div><!--//item-->
-                    </div><!--//col-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-4">
                         <div class="review-item rounded p-5">
                             <blockquote class="quote mb-4">
@@ -373,26 +371,26 @@
                                                 d="M19.2093023,0 L19.2093023,1.17365269 C17.5968912,1.78044216 16.3333379,2.73452443 15.4186047,4.03592814 C14.5038714,5.33733186 14.0465116,6.69061174 14.0465116,8.09580838 C14.0465116,8.39920311 14.0930228,8.62275377 14.1860465,8.76646707 C14.2480623,8.86227593 14.3178291,8.91017964 14.3953488,8.91017964 C14.4728686,8.91017964 14.5891465,8.85429198 14.744186,8.74251497 C15.2403126,8.37524766 15.8682133,8.19161677 16.627907,8.19161677 C17.5116323,8.19161677 18.2945702,8.56287054 18.9767442,9.30538922 C19.6589181,10.0479079 20,10.9301346 20,11.9520958 C20,13.0219614 19.608531,13.9640678 18.8255814,14.7784431 C18.0426317,15.5928184 17.0930288,16 15.9767442,16 C14.6744121,16 13.5503923,15.4491073 12.6046512,14.3473054 C11.65891,13.2455035 11.1860465,11.7684723 11.1860465,9.91616766 C11.1860465,7.76046826 11.8294509,5.82835186 13.1162791,4.11976048 C14.4031072,2.4111691 16.4340947,1.03792934 19.2093023,0 Z M8.02325581,0 L8.02325581,1.17365269 C6.41084465,1.78044216 5.1472914,2.73452443 4.23255814,4.03592814 C3.31782488,5.33733186 2.86046512,6.69061174 2.86046512,8.09580838 C2.86046512,8.39920311 2.90697628,8.62275377 3,8.76646707 C3.06201581,8.86227593 3.13178256,8.91017964 3.20930233,8.91017964 C3.28682209,8.91017964 3.4031,8.85429198 3.55813953,8.74251497 C4.05426605,8.37524766 4.68216674,8.19161677 5.44186047,8.19161677 C6.32558581,8.19161677 7.10852372,8.56287054 7.79069767,9.30538922 C8.47287163,10.0479079 8.81395349,10.9301346 8.81395349,11.9520958 C8.81395349,13.0219614 8.42248453,13.9640678 7.63953488,14.7784431 C6.85658523,15.5928184 5.90698233,16 4.79069767,16 C3.48836558,16 2.36434581,15.4491073 1.41860465,14.3473054 C0.472863488,13.2455035 0,11.7684723 0,9.91616766 C0,7.76046826 0.643404419,5.82835186 1.93023256,4.11976048 C3.2170607,2.4111691 5.24804814,1.03792934 8.02325581,0 Z">
                                             </path>
                                         </g>
-                                    </svg><!--//quote-icon-->
+                                    </svg>
                                 </div>
                                 <p>I've learnt so much lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     Phasellus quam magna,
                                     vulputate at sem id, gravida laoreet risus.</p>
-                            </blockquote><!--//quote-->
+                            </blockquote>
                             <div class="source">
                                 <div class="row align-items-center">
                                     <div class="col-3 col-lg-4">
                                         <div class="profile"><img class="profile-image img-fluid"
                                                 src="assets/images/users/user-3.jpg" alt=""></div>
-                                    </div><!--col-12-->
+                                    </div>
                                     <div class="col-9 col-lg-8">
                                         <div class="name font-weight-bold">Luke Doe</div>
                                         <div class="meta">Paris</div>
-                                    </div><!--//col-12-->
-                                </div><!--//row-->
-                            </div><!--//source-->
-                        </div><!--//item-->
-                    </div><!--//col-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-4">
                         <div class="review-item rounded p-5">
                             <blockquote class="quote mb-4">
@@ -405,26 +403,26 @@
                                                 d="M19.2093023,0 L19.2093023,1.17365269 C17.5968912,1.78044216 16.3333379,2.73452443 15.4186047,4.03592814 C14.5038714,5.33733186 14.0465116,6.69061174 14.0465116,8.09580838 C14.0465116,8.39920311 14.0930228,8.62275377 14.1860465,8.76646707 C14.2480623,8.86227593 14.3178291,8.91017964 14.3953488,8.91017964 C14.4728686,8.91017964 14.5891465,8.85429198 14.744186,8.74251497 C15.2403126,8.37524766 15.8682133,8.19161677 16.627907,8.19161677 C17.5116323,8.19161677 18.2945702,8.56287054 18.9767442,9.30538922 C19.6589181,10.0479079 20,10.9301346 20,11.9520958 C20,13.0219614 19.608531,13.9640678 18.8255814,14.7784431 C18.0426317,15.5928184 17.0930288,16 15.9767442,16 C14.6744121,16 13.5503923,15.4491073 12.6046512,14.3473054 C11.65891,13.2455035 11.1860465,11.7684723 11.1860465,9.91616766 C11.1860465,7.76046826 11.8294509,5.82835186 13.1162791,4.11976048 C14.4031072,2.4111691 16.4340947,1.03792934 19.2093023,0 Z M8.02325581,0 L8.02325581,1.17365269 C6.41084465,1.78044216 5.1472914,2.73452443 4.23255814,4.03592814 C3.31782488,5.33733186 2.86046512,6.69061174 2.86046512,8.09580838 C2.86046512,8.39920311 2.90697628,8.62275377 3,8.76646707 C3.06201581,8.86227593 3.13178256,8.91017964 3.20930233,8.91017964 C3.28682209,8.91017964 3.4031,8.85429198 3.55813953,8.74251497 C4.05426605,8.37524766 4.68216674,8.19161677 5.44186047,8.19161677 C6.32558581,8.19161677 7.10852372,8.56287054 7.79069767,9.30538922 C8.47287163,10.0479079 8.81395349,10.9301346 8.81395349,11.9520958 C8.81395349,13.0219614 8.42248453,13.9640678 7.63953488,14.7784431 C6.85658523,15.5928184 5.90698233,16 4.79069767,16 C3.48836558,16 2.36434581,15.4491073 1.41860465,14.3473054 C0.472863488,13.2455035 0,11.7684723 0,9.91616766 C0,7.76046826 0.643404419,5.82835186 1.93023256,4.11976048 C3.2170607,2.4111691 5.24804814,1.03792934 8.02325581,0 Z">
                                             </path>
                                         </g>
-                                    </svg><!--//quote-icon-->
+                                    </svg>
                                 </div>
                                 <p>Great course lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
                                     condimentum mi sed
                                     tortor lobortis, nec feugiat nisi venenatis.</p>
-                            </blockquote><!--//quote-->
+                            </blockquote>
                             <div class="source">
                                 <div class="row align-items-center">
                                     <div class="col-3 col-lg-4">
                                         <div class="profile"><img class="profile-image img-fluid"
                                                 src="assets/images/users/user-4.jpg" alt=""></div>
-                                    </div><!--col-12-->
+                                    </div>
                                     <div class="col-9 col-lg-8">
                                         <div class="name font-weight-bold">Leo Doe</div>
                                         <div class="meta">San Francisco</div>
-                                    </div><!--//col-12-->
-                                </div><!--//row-->
-                            </div><!--//source-->
-                        </div><!--//item-->
-                    </div><!--//col-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-4 align-items-center order-1 order-lg-0">
                         <div class="review-item item-promo rounded p-5">
                             <h4 class="item-promo-heading mb-3">Join Over 20,000 Others Worldwide!</h4>
@@ -433,7 +431,7 @@
                             </div>
                             <a class="btn btn-ghost scrollto" href="#section-pricing">Join Now</a>
                         </div>
-                    </div><!--//col-->
+                    </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-4">
                         <div class="review-item rounded p-5">
                             <blockquote class="quote mb-4">
@@ -446,30 +444,30 @@
                                                 d="M19.2093023,0 L19.2093023,1.17365269 C17.5968912,1.78044216 16.3333379,2.73452443 15.4186047,4.03592814 C14.5038714,5.33733186 14.0465116,6.69061174 14.0465116,8.09580838 C14.0465116,8.39920311 14.0930228,8.62275377 14.1860465,8.76646707 C14.2480623,8.86227593 14.3178291,8.91017964 14.3953488,8.91017964 C14.4728686,8.91017964 14.5891465,8.85429198 14.744186,8.74251497 C15.2403126,8.37524766 15.8682133,8.19161677 16.627907,8.19161677 C17.5116323,8.19161677 18.2945702,8.56287054 18.9767442,9.30538922 C19.6589181,10.0479079 20,10.9301346 20,11.9520958 C20,13.0219614 19.608531,13.9640678 18.8255814,14.7784431 C18.0426317,15.5928184 17.0930288,16 15.9767442,16 C14.6744121,16 13.5503923,15.4491073 12.6046512,14.3473054 C11.65891,13.2455035 11.1860465,11.7684723 11.1860465,9.91616766 C11.1860465,7.76046826 11.8294509,5.82835186 13.1162791,4.11976048 C14.4031072,2.4111691 16.4340947,1.03792934 19.2093023,0 Z M8.02325581,0 L8.02325581,1.17365269 C6.41084465,1.78044216 5.1472914,2.73452443 4.23255814,4.03592814 C3.31782488,5.33733186 2.86046512,6.69061174 2.86046512,8.09580838 C2.86046512,8.39920311 2.90697628,8.62275377 3,8.76646707 C3.06201581,8.86227593 3.13178256,8.91017964 3.20930233,8.91017964 C3.28682209,8.91017964 3.4031,8.85429198 3.55813953,8.74251497 C4.05426605,8.37524766 4.68216674,8.19161677 5.44186047,8.19161677 C6.32558581,8.19161677 7.10852372,8.56287054 7.79069767,9.30538922 C8.47287163,10.0479079 8.81395349,10.9301346 8.81395349,11.9520958 C8.81395349,13.0219614 8.42248453,13.9640678 7.63953488,14.7784431 C6.85658523,15.5928184 5.90698233,16 4.79069767,16 C3.48836558,16 2.36434581,15.4491073 1.41860465,14.3473054 C0.472863488,13.2455035 0,11.7684723 0,9.91616766 C0,7.76046826 0.643404419,5.82835186 1.93023256,4.11976048 C3.2170607,2.4111691 5.24804814,1.03792934 8.02325581,0 Z">
                                             </path>
                                         </g>
-                                    </svg><!--//quote-icon-->
+                                    </svg>
                                 </div>
                                 <p>I've learnt so much lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     Phasellus quam magna,
                                     vulputate at sem id, gravida laoreet risus.</p>
-                            </blockquote><!--//quote-->
+                            </blockquote>
                             <div class="source">
                                 <div class="row align-items-center">
                                     <div class="col-3 col-lg-4">
                                         <div class="profile"><img class="profile-image img-fluid"
                                                 src="assets/images/users/user-5.jpg" alt=""></div>
-                                    </div><!--col-12-->
+                                    </div>
                                     <div class="col-9 col-lg-8">
                                         <div class="name font-weight-bold">Alice Doe</div>
                                         <div class="meta">Australia</div>
-                                    </div><!--//col-12-->
-                                </div><!--//row-->
-                            </div><!--//source-->
-                        </div><!--//item-->
-                    </div><!--//col-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                </div><!--//row-->
-            </div><!--//container-->
-        </div><!--//section-reviews-->
+                </div>
+            </div>
+        </div> -->
 
         <div id="section-pricing" class="section-pricing py-5">
             <div class="container">
@@ -551,7 +549,7 @@
         </div><!--//section-pricing-->
 
 
-        <div id="section-faq" class="section-faq my-lg-5">
+        <!-- <div id="section-faq" class="section-faq my-lg-5">
             <div class="container">
                 <div class="container-inner p-5 theme-bg-light rounded">
                     <div class="row">
@@ -577,7 +575,7 @@
                                             at scelerisque nisl
                                             metus nec augue. </p>
                                     </div>
-                                </div><!--//item-->
+                                </div>
                                 <div class="item">
                                     <h4 class="faq-q mb-2"><i class="far fa-question-circle me-2 text-primary"></i>How
                                         to lorem ipsum
@@ -589,7 +587,7 @@
                                             interdum efficitur,
                                             eros magna bibendum tortor, at pellentesque nunc quam eu diam. </p>
                                     </div>
-                                </div><!--//item-->
+                                </div>
                                 <div class="item">
                                     <h4 class="faq-q mb-2"><i class="far fa-question-circle me-2 text-primary"></i>Does
                                         lorem ipsum
@@ -600,7 +598,7 @@
                                             tellus vel dictum. Cras lacinia lectus magna, facilisis congue lacus
                                             tristique non. </p>
                                     </div>
-                                </div><!--//item-->
+                                </div>
                                 <div class="item">
                                     <h4 class="faq-q mb-2"><i class="far fa-question-circle me-2 text-primary"></i>When
                                         do you lorem
@@ -610,7 +608,7 @@
                                             blandit iaculis a
                                             fermentum lectus. Proin dictum lacus id fringilla interdum. </p>
                                     </div>
-                                </div><!--//item-->
+                                </div>
                                 <div class="item">
                                     <h4 class="faq-q mb-2"><i class="far fa-question-circle me-2 text-primary"></i>Can I
                                         lorem ipsum
@@ -622,7 +620,7 @@
                                             vitae auctor lectus
                                             pellentesque. </p>
                                     </div>
-                                </div><!--//item-->
+                                </div>
                                 <div class="item">
                                     <h4 class="faq-q mb-2"><i class="far fa-question-circle me-2 text-primary"></i>Does
                                         lorem ipsum
@@ -634,13 +632,13 @@
                                             vitae auctor lectus
                                             pellentesque. </p>
                                     </div>
-                                </div><!--//item-->
-                            </div><!--//faq-items-->
+                                </div>
+                            </div>
                         </div>
-                    </div><!--//row-->
-                </div><!--//container-inner-->
-            </div><!--//container-->
-        </div><!--//section-faq-->
+                    </div>
+                </div>
+            </div>
+        </div> -->
         <!-- 
         <div id="section-more" class="section section-related py-5">
             <div class="container">
@@ -704,7 +702,7 @@
             </div>
         </div> -->
 
-        <div class="section section-contact text-center">
+        <!-- <div class="section section-contact text-center">
             <div class="container">
                 <div class="container-inner p-5 position-relative theme-bg-primary rounded text-white">
                     <div class="section-bg-container"></div>
@@ -726,14 +724,14 @@
                                 <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a>
                                 </li>
                                 <li class="list-inline-item"><a href="#"><i class="fas fa-envelope fa-fw"></i></a></li>
-                            </ul><!--//social-list-->
+                            </ul>
                         </div>
-                    </div><!--//section-col-max-->
-                </div><!--//container-inner-->
-            </div><!--//container-->
-        </div><!--//section-->
-    </div><!--//sections-block-->
-</div><!--//section-wrapper-->
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
 
 <footer class="footer pb-5 text-center">
     <div class="container">
@@ -848,6 +846,7 @@
                                             <p class="text-center"><a href="#" data-bs-toggle="modal"
                                                     data-bs-target="#modal-login" id="signin">Already have an
                                                     account?</a>
+
                                             </p>
                                         </div>
                                     </div>
